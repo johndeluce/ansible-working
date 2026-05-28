@@ -8,6 +8,7 @@
     rollback_log: /tmp/app-rollback.log
     summary_log: /tmp/app-summary.log
     app_version: "1.0.0"
+    force_failure: true
 
   tasks:
     - name: Deploy application with rollback protection
@@ -26,6 +27,7 @@
 
         - name: Simulate deployment failure
           ansible.builtin.command: /bin/false
+          when: force_failure | bool
 
       rescue:
         - name: Record failed task name
