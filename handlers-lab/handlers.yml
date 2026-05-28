@@ -11,7 +11,7 @@
   tasks:
     - name: Deploy demo service configuration file
       ansible.builtin.template:
-        src: demo_service_config.j2
+        src: demo_service.conf.j2
         dest: tmp/demo-service.conf
         mode: '0644'
       notify: Restart demo service
