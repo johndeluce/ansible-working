@@ -14,12 +14,12 @@
         src: demo-service.conf.j2
         dest: /tmp/demo-service.conf
         mode: '0644'
-      notify: Restart demo service
+      notify: restart demo service
 
     - name: Display configuration deployment message
       ansible.builtin.debug:
         msg: "Demo service configuration checked on {{ inventory_hostname }}"
-  
+
   handlers:
     - name: Write restart marker
       ansible.builtin.lineinfile:
@@ -27,4 +27,4 @@
         line: "Restart triggered for {{ demo_service_name }} on {{ inventory_hostname }}"
         create: true
         mode: '0644'
-      listen: restart demo service   
+      listen: restart demo service
